@@ -1,0 +1,7 @@
+{
+  "model_type": "logistic_regression",
+  "accuracy": 0.9666666666666667,
+  "n_features": 4,
+  "n_train_samples": 120,
+  "n_test_samples": 30
+}

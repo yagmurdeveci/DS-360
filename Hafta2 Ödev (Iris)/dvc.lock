@@ -1,0 +1,58 @@
+schema: '2.0'
+stages:
+  download_data:
+    cmd: python src/download_data.py
+    deps:
+    - path: src/download_data.py
+      hash: md5
+      md5: f8e62e18df59da12904776471ee322ea
+      size: 708
+    outs:
+    - path: data/raw/iris.csv
+      hash: md5
+      md5: 21d441a28bce4417276097df955afc50
+      size: 2928
+  clean_data:
+    cmd: python src/clean_data.py
+    deps:
+    - path: data/raw/iris.csv
+      hash: md5
+      md5: 21d441a28bce4417276097df955afc50
+      size: 2928
+    - path: src/clean_data.py
+      hash: md5
+      md5: 3686e3265eb903ccd939e475827bf987
+      size: 1053
+    outs:
+    - path: data/processed/iris_processed.csv
+      hash: md5
+      md5: 134a4ae2d7ea9a6d411ab1c6278c48ea
+      size: 3243
+  train_model:
+    cmd: python src/train_model.py
+    deps:
+    - path: data/processed/iris_processed.csv
+      hash: md5
+      md5: 134a4ae2d7ea9a6d411ab1c6278c48ea
+      size: 3243
+    - path: src/train_model.py
+      hash: md5
+      md5: 8f5d1921662a94b6c9a8d932d5cb832e
+      size: 2096
+    outs:
+    - path: models/features.json
+      hash: md5
+      md5: ee3ba8ab72a8128c6dfdf612ac01ccab
+      size: 97
+    - path: models/logistic_regression_model.pkl
+      hash: md5
+      md5: 0c1a08112d8eb02262acee9c1d3c6b7d
+      size: 1311
+    - path: models/metrics.json
+      hash: md5
+      md5: d4e8976512a64ac228a464b48d50a4d8
+      size: 150
+    - path: models/random_forest_model.pkl
+      hash: md5
+      md5: f0513463ca09d85354c515ceceaae878
+      size: 168033
