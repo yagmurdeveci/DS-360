@@ -1,0 +1,14 @@
+artifact_path: "file:///C:/Users/Ya\u011Fmur/Dropbox/PC/Desktop/fraud_detection_projesi/mlruns/1/models/m-fe8c16a6ef464f7b9f22c8ed7fdca517/artifacts"
+flavors:
+  sklearn:
+    code: null
+    pickled_model: model.pkl
+    serialization_format: cloudpickle
+    sklearn_version: 1.3.2
+mlflow_version: 3.4.0
+model_id: m-fe8c16a6ef464f7b9f22c8ed7fdca517
+model_size_bytes: 756171
+model_uuid: m-fe8c16a6ef464f7b9f22c8ed7fdca517
+prompts: null
+run_id: 9e8085de44b54eb2ad7dff71859b1efc
+utc_time_created: '2025-10-12 21:11:55.181544'
