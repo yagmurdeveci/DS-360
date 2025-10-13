@@ -1,0 +1,41 @@
+name: Python CI/CD
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+          pip install kagglehub
+
+      - name: Download dataset and run pipeline
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          # The pipeline script handles downloading the dataset automatically
+          python src/pipeline.py --mode train --use_kagglehub
+
+      - name: Check pipeline output
+        run: |
+          if [ ! -d "models" ]; then
+            echo "Models directory was not created!"
+            exit 1
+          fi
+          echo "CI/CD pipeline passed successfully!"
